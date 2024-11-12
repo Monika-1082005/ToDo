@@ -1,4 +1,4 @@
-import ChecklistImage from '../../public/Checklist.png'; // Adjust path if necessary
+import ChecklistImage from '/Checklist.png'; // Adjust path if necessary
 
 const Hero = () => {
   return (

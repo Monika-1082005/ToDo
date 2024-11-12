@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardList, faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 import TextField from "@mui/material/TextField";
-import TodoImg from "../../public/Checklist2.png";
+import TodoImg from "/Checklist2.png";
 import { auth } from '../firebase'; // Import Firebase auth for authentication check
 import { useNavigate } from 'react-router-dom';
 
