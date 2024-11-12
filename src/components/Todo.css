@@ -1,0 +1,10 @@
+/* Add this to your Todo.css file */
+
+/* Slide-out effect */
+.slide-out {
+    transform: translateX(100%); /* Slide to the right */
+    opacity: 0;
+    pointer-events: none;  /* Disable interactions during the animation */
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  }
+  
