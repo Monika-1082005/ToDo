@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaUserCircle } from 'react-icons/fa';
 import logo from '/logo.png';
 import { signOut } from 'firebase/auth';
@@ -14,11 +14,12 @@ const navItems = [
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null); // Reference for dropdown
+  const dropdownRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = async () => {
-    const confirmLogout = window.confirm("Are you sure you want to log out?");
+    const confirmLogout = window.confirm('Are you sure you want to log out?');
     if (confirmLogout) {
       try {
         await signOut(auth);
@@ -30,17 +31,14 @@ const Navbar = () => {
   };
 
   const handleClickOutside = (event) => {
-    // Check if the click is outside the dropdown
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsDropdownOpen(false);
     }
   };
 
   useEffect(() => {
-    // Attach event listener on mount
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      // Cleanup event listener on unmount
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
@@ -48,7 +46,6 @@ const Navbar = () => {
   return (
     <nav className="bg-white shadow-md fixed w-full z-10">
       <div className="container mx-auto flex items-center justify-between p-4">
-        
         <div className="flex items-center space-x-4">
           <img src={logo} alt="Logo" className="w-14 h-auto" />
         </div>
@@ -59,7 +56,11 @@ const Navbar = () => {
               <li key={index} className="md:mx-4 my-2 md:my-0">
                 <Link
                   to={item.link}
-                  className="text-gray-800 font-bold px-4 py-2 rounded-md transition-all duration-300 transform hover:bg-[#68e1fd] hover:text-black hover:scale-105"
+                  className={`text-gray-800 font-bold px-4 py-2 rounded-md transition-all duration-300 transform hover:bg-[#68e1fd] hover:text-black hover:scale-105 ${
+                    (location.pathname === '/login' || location.pathname === '/signup') && item.name === 'Home'
+                      ? 'pointer-events-none text-slate-600 cursor-not-allowed'
+                      : ''
+                  }`}
                   onClick={() => setIsOpen(false)}
                 >
                   {item.name}
@@ -78,13 +79,6 @@ const Navbar = () => {
           </button>
           {isDropdownOpen && (
             <div className="absolute right-0 mt-2 bg-white border rounded shadow-md w-32">
-              <Link
-                to="/"
-                className="block px-4 py-2 text-gray-800 hover:bg-[#68e1fd] hover:text-black"
-                onClick={() => setIsDropdownOpen(false)}
-              >
-                Dashboard
-              </Link>
               <button
                 onClick={handleLogout}
                 className="w-full text-left px-4 py-2 text-gray-800 hover:bg-[#68e1fd] hover:text-black"
@@ -108,7 +102,11 @@ const Navbar = () => {
                 <li key={index}>
                   <Link
                     to={item.link}
-                    className="text-gray-800 font-bold px-4 py-2 rounded-md transition-all duration-300 transform hover:bg-[#68e1fd] hover:text-black hover:scale-105"
+                    className={`text-gray-800 font-bold px-4 py-2 rounded-md transition-all duration-300 transform hover:bg-[#68e1fd] hover:text-black hover:scale-105 ${
+                      (location.pathname === '/login' || location.pathname === '/signup') && item.name === 'Home'
+                        ? 'pointer-events-none text-gray-400 cursor-not-allowed'
+                        : ''
+                    }`}
                     onClick={() => setIsOpen(false)}
                   >
                     {item.name}

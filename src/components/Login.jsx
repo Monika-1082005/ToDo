@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { TextField } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
-import { auth, db } from '../firebase';  // Assuming db is already imported
-import GoogleIcon from '@mui/icons-material/Google'; // Google icon
+import { auth, db } from '../firebase'; 
+import GoogleIcon from '@mui/icons-material/Google';
 import { doc, getDoc } from 'firebase/firestore';
 
 const Login = () => {

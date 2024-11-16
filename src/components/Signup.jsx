@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { setDoc, doc } from 'firebase/firestore';
 import { auth, db } from '../firebase';
-import GoogleIcon from '@mui/icons-material/Google';  // Import Google Icon
+import GoogleIcon from '@mui/icons-material/Google';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -12,7 +12,7 @@ const Signup = () => {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);  // To manage loading state
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = async (e) => {

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardList, faTrashAlt, faEdit } from "@fortawesome/free-solid-svg-icons";
 import TextField from "@mui/material/TextField";
 import TodoImg from "/Checklist2.png";
-import { auth } from '../firebase'; // Import Firebase auth for authentication check
+import { auth } from '../firebase';
 import { useNavigate } from 'react-router-dom';
 
 const Todo = () => {
@@ -16,7 +16,6 @@ const Todo = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check authentication state
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setIsAuthenticated(!!user);
     });
@@ -26,14 +25,14 @@ const Todo = () => {
   const addTask = () => {
     if (!isAuthenticated) {
       alert("Please log in to add tasks.");
-      navigate("/login");  // Redirect to login if not authenticated
+      navigate("/login");
       return;
     }
 
     if (taskInput.trim()) {
       setTasks([...tasks, { text: taskInput, completed: false, isDeleting: false }]);
       setTaskInput("");
-      taskListRef.current.scrollTop = taskListRef.current.scrollHeight; // Auto scroll to the bottom
+      taskListRef.current.scrollTop = taskListRef.current.scrollHeight;
     }
   };
 

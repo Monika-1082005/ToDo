@@ -6,7 +6,7 @@ import Hero from './components/Hero';
 import Todo from './components/Todo';
 import Signup from './components/Signup';
 import Login from './components/Login';
-import { auth } from './firebase'; // Import Firebase authentication
+import { auth } from './firebase';
 import './App.css';
 
 const AppContent = () => {

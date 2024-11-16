@@ -54,7 +54,7 @@ const Footer = () => {
           <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#231f20] text-white rounded-full hover:bg-[#68e1fd] hover:text-black transition duration-300">
             <i className="fab fa-facebook-f"></i>
           </a>
-          <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#231f20] text-white rounded-full hover:bg-[#68e1fd] hover:text-black transition duration-300">
+          <a href="https://github.com/Monika-1082005/ToDo" className="flex items-center justify-center w-10 h-10 bg-[#231f20] text-white rounded-full hover:bg-[#68e1fd] hover:text-black transition duration-300">
             <i className="fab fa-github"></i>
           </a>
           <a href="#" className="flex items-center justify-center w-10 h-10 bg-[#231f20] text-white rounded-full hover:bg-[#68e1fd] hover:text-black transition duration-300">
